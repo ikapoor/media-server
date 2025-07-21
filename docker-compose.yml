@@ -66,4 +66,18 @@ services:
       - PGID=1000
       - WEBUI_PORT=8080
     restart: unless-stopped
+  bazarr:
+    image: linuxserver/bazarr
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./config/bazarr:/config
+      - ./media
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
 
